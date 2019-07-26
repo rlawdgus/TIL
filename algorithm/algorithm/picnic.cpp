@@ -35,7 +35,7 @@ int main() {
 	ofstream out("picnic.out");
 
 	int C, n, m, a, b;
-	
+
 	inp >> C;
 	while (C--) {
 		inp >> n >> m;

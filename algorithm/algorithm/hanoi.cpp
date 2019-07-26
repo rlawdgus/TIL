@@ -1,7 +1,7 @@
 #include <fstream>
 using namespace std;
 
-void hanoi(int n, char A, char B, char C, ofstream *out) { //A가 있는곳, B가 나머지 둘곳, C가 목적지
+void hanoi(int n, char A, char B, char C, ofstream* out) { //A가 있는곳, B가 나머지 둘곳, C가 목적지
 	if (n == 1) {
 		*out << A << ' ' << C << endl;	// == 목적지로 보낸다는 뜻
 		return;

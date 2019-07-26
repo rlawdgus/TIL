@@ -8,7 +8,7 @@ int index = 0;
 void quadtree(string str, int index) {
 	if (str[index] == 'x') {
 		result += str[index];
-		
+
 		quadtree(str, index + 3);
 		quadtree(str, index + 4);
 		quadtree(str, index + 1);
