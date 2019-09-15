@@ -5,12 +5,12 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{cb766c15-6a01-4704-a3e1-b7ed465cd419}</UniqueIdentifier>
+    </Filter>
     <Filter Include="리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{cb766c15-6a01-4704-a3e1-b7ed465cd419}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +68,30 @@
     <None Include="bowling.inp">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="palindrome.inp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="palindrome.out">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="tree2.inp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="tree2.out">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="paper.inp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="paper.out">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="cube.inp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="cube.out">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="primefactor.cpp">
@@ -107,6 +131,21 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="quadtree.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="palindrome.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="tree.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="tree2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="paper.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cube.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
