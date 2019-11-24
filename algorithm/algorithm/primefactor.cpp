@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-vector< int > arr;
+vector< int > input;
 
 int arr_sum(vector< int > arr) {
 	int result = 0;
@@ -24,16 +24,16 @@ int main() {
 
 		for (int i = 2; i <= num; i++) {
 			if (num % i == 0) {
-				arr.push_back(i);
+				input.push_back(i);
 				num /= i;
 				i = 1;
 			}
 		}
 
-		if (arr.size() == 1) out << "Prime Number" << '\n';
-		else out << arr_sum(arr) << '\n';
+		if (input.size() == 1) out << "Prime Number" << '\n';
+		else out << arr_sum(input) << '\n';
 
-		arr.clear();
+		input.clear();
 	}
 
 	inp.close();

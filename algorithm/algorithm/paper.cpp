@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-struct node {
+struct board_node {
 	int num;
 
 	int w_start;
@@ -18,7 +18,7 @@ struct node {
 	int area;
 };
 
-vector< node > input;
+vector< board_node > input;
 int board[4001][4001];
 vector< vector< int > > shape(2);
 int overlap, not_overlap, part_overlap;

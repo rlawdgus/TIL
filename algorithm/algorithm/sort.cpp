@@ -3,14 +3,14 @@
 #include <algorithm>
 using namespace std;
 
-struct node {
+struct board_node {
 	int value;
 	int value2;
 };
 
-vector< node > board;
+vector< board_node > board;
 
-bool compare(node a, node b) {	//false일 때 정렬
+bool compare(board_node a, board_node b) {	//false일 때 정렬
 	if (a.value2 == b.value2) return a.value < b.value;	//오름차순
 	return a.value2 < b.value2;
 }

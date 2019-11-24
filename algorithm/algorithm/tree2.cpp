@@ -9,7 +9,7 @@ int in[10000];
 int post[10000];
 int visit[1000000];
 
-int length_L(int pivot) {	//중위배열에서 왼쪽 길이 반환
+int length_L(int pivot) {	//중위배열에서 왼쪽 길이 반환 0 1 4 2 7 6 5 3
 	int cnt = 0;
 
 	for (int i = pivot - 1; i >= 0; i--) {
@@ -67,7 +67,7 @@ void pre_order(int root, int pivot, int length) {
 	int left = length_L(pivot);
 	int right = length_R(pivot, length);		//중위배열 정보로 찾는다
 
-	int point;	//전위배열에서 루트의 위치
+	int point;	//후위배열에서 루트의 위치
 	for (int i = 0; i < length; i++) {
 		if (post[i] == root) { point = i; break; }
 	}

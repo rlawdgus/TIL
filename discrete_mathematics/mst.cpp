@@ -8,14 +8,17 @@ typedef struct Vertex { int dest, weight; }Vertex;
 vector< vector< Vertex > > graph;
 vector< Vertex > result;
 vector< bool > visit;
+
 bool operator<(const Vertex &a, const Vertex &b) {
 	if (a.weight == b.weight) return a.dest > b.dest;
 	return a.weight > b.weight;
 }
+
 bool compare(const Vertex &a, const Vertex &b) {
 	if (a.dest == b.dest) return a.weight < b.weight;
 	return a.dest < b.dest;
 }
+
 priority_queue< Vertex > heap;
 
 int cnt = 0;
@@ -43,7 +46,9 @@ void prim(int start, int tmp) {
 int main() {
 	ifstream inp("mst.inp");
 	ofstream out("mst.out");
+
 	int n, m, u, v, w;
+
 	inp >> n >> m;
 	graph.resize(n);
 	visit.resize(n);
@@ -52,14 +57,19 @@ int main() {
 		graph[u].push_back({ v, w });
 		graph[v].push_back({ u, w });
 	}
-	for (int i = 0; i < n; i++)
-		if (!visit[i]) { 
-			prim(i, 0); 
-			cnt = 0; 
+
+	for (int i = 0; i < n; i++) {
+		if (!visit[i]) {
+			prim(i, 0);
+			cnt = 0;
 		}
+	}
+
 	sort(result.begin(), result.end(), compare);
+
 	for (int i = 0; i < result.size(); i++)
 		out << result[i].dest << ' ' << result[i].weight << '\n';
+
 	inp.close();
 	out.close();
 	return 0;
