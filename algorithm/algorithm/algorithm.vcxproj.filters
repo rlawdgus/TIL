@@ -182,6 +182,18 @@
     <None Include="watertank.out">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="light.inp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="light.out">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="sudoku.inp">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="sudoku.out">
+      <Filter>리소스 파일</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="primefactor.cpp">
@@ -284,6 +296,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="watertank.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="light.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="sudoku.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

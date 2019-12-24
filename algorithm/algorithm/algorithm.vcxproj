@@ -152,6 +152,8 @@
     <None Include="inv.out" />
     <None Include="ladder.inp" />
     <None Include="ladder.out" />
+    <None Include="light.inp" />
+    <None Include="light.out" />
     <None Include="mst.inp" />
     <None Include="mst.out" />
     <None Include="palindrome.inp" />
@@ -174,6 +176,8 @@
     <None Include="quadtree.out" />
     <None Include="sequence.inp" />
     <None Include="sequence.out" />
+    <None Include="sudoku.inp" />
+    <None Include="sudoku.out" />
     <None Include="tree.inp" />
     <None Include="tree.out" />
     <None Include="tree2.inp" />
@@ -233,6 +237,9 @@
     <ClCompile Include="ladder.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="light.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="mst.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -275,13 +282,16 @@
     <ClCompile Include="sort.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="sudoku.cpp" />
     <ClCompile Include="tree.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="tree2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="watertank.cpp" />
+    <ClCompile Include="watertank.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
