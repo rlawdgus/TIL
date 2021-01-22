@@ -1,10 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../store";
-import { increase, decrease } from "../store/counter";
+import { increase, decrease } from "../redux/reducer/counter";
 
 const Home: React.FC = () => {
-    const count = useSelector((state: RootState) => state.counter.count);
+    const value = useSelector((state: any) => state.counter.value);
     const dispatch = useDispatch();
 
     const onIncrease = () => {
@@ -16,7 +15,7 @@ const Home: React.FC = () => {
 
     return (
         <>
-            <h1>{count}</h1>
+            <h1>{value}</h1>
 
             <button onClick={onIncrease}>increase</button>
             <button onClick={onDecrease}>decrease</button>
