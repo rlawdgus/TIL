@@ -1,21 +1,27 @@
 import React from "react";
-import Link from 'next/link'
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store";
+import { increase, decrease } from "../store/counter";
 
 const Home: React.FC = () => {
+    const count = useSelector((state: RootState) => state.counter.count);
+    const dispatch = useDispatch();
+
+    const onIncrease = () => {
+        dispatch(increase());
+    };
+    const onDecrease = () => {
+        dispatch(decrease());
+    };
+
     return (
-        <ul>
-            <li>
-                <Link href="/[main]?id=1" as="qwe">
-                    <a>qwe</a>
-                </Link>
-            </li>
-            <li>
-                <Link href="/[main]" as="asd">
-                    <a>asd</a>
-                </Link>
-            </li>
-        </ul>
-    )
+        <>
+            <h1>{count}</h1>
+
+            <button onClick={onIncrease}>increase</button>
+            <button onClick={onDecrease}>decrease</button>
+        </>
+    );
 };
 
 export default Home;
