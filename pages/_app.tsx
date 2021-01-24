@@ -1,33 +1,21 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { createStore, applyMiddleware, Middleware, StoreEnhancer } from "redux";
-import { MakeStore, createWrapper } from "next-redux-wrapper";
+import { applyMiddleware, createStore } from "redux";
+import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import rootReducer, {  } from "../store";
+import rootReducer, { rootSaga } from "../store";
 
 import "../style.css";
 
-const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
-    if (process.env.NODE_ENV !== "production") {
-        const { composeWithDevTools } = require("redux-devtools-extension");
-        return composeWithDevTools(applyMiddleware(...middleware));
-    }
-    return applyMiddleware(...middleware);
-};
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
 
-const makeStore: MakeStore<{}> = () => {
-    const sagaMiddleware = createSagaMiddleware();
-    const middlewares = [sagaMiddleware];
-
-    const store = createStore(
-        rootReducer,
-        {},
-        // bindMiddleware([...middlewares])
-    );
-    // sagaMiddleware.run(rootSaga);
-    return store;
-};
+sagaMiddleware.run(rootSaga);
 
 const App = ({ Component, pageProps }: AppProps) => {
     return (
@@ -35,9 +23,11 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Head>
                 <title>Next.js training</title>
             </Head>
-            <Component {...pageProps} />
+            <Provider store={store}>
+                <Component {...pageProps} />
+            </Provider>
         </>
     );
 };
 
-export default createWrapper<{}>(makeStore, { debug: true }).withRedux(App);
+export default App;

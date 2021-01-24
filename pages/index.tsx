@@ -2,18 +2,18 @@ import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { RootState } from "../store";
-import { increase, decrease } from "../store/counter";
+import { increaseAsync, decreaseAsync } from "../store/counter";
 
 const Index: React.FC = () => {
     const value = useSelector((state: RootState) => state.counter.value);
     const dispatch = useDispatch();
 
     const onIncrease = useCallback(() => {
-        dispatch(increase());
+        dispatch(increaseAsync());
     }, []);
 
     const onDecrease = useCallback(() => {
-        dispatch(decrease());
+        dispatch(decreaseAsync());
     }, []);
 
     return (
