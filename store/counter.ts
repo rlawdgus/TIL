@@ -13,15 +13,15 @@ const DECREASE_ASYNC = "counter/DECREASE_ASYNC" as const;
 export const increase = createAction(INCREASE);
 export const decrease = createAction(DECREASE);
 
-export const increaseAsync = createAction(INCREASE_ASYNC, () => undefined)
-export const decreaseAsync = createAction(DECREASE_ASYNC, () => undefined)
+export const increaseAsync = createAction(INCREASE_ASYNC, () => undefined);
+export const decreaseAsync = createAction(DECREASE_ASYNC, () => undefined);
 
 type CounterAction = ReturnType<typeof increase> | ReturnType<typeof decrease>;
 
 function* increaseSaga() {
     //yield loading
     try {
-        yield delay(1000)
+        yield delay(1000);
         yield put({ type: INCREASE });
     } catch (e) {
         yield console.log(e);
@@ -32,7 +32,7 @@ function* increaseSaga() {
 function* decreaseSaga() {
     //yield loading
     try {
-        yield delay(1000)
+        yield delay(1000);
         yield put({ type: DECREASE });
     } catch (e) {
         yield console.log(e);
