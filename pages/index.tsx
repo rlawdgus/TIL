@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increase, decrease } from "../redux/reducer/counter";
 
-const Home: React.FC = () => {
-    const value = useSelector((state: any) => state.counter.value);
+import { RootState } from "../store";
+import { increase, decrease } from "../store/counter";
+
+const Index: React.FC = () => {
+    const value = useSelector((state: RootState) => state.counter.value);
     const dispatch = useDispatch();
 
-    const onIncrease = () => {
+    const onIncrease = useCallback(() => {
         dispatch(increase());
-    };
-    const onDecrease = () => {
+    }, []);
+
+    const onDecrease = useCallback(() => {
         dispatch(decrease());
-    };
+    }, []);
 
     return (
         <>
@@ -23,4 +26,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default Index;
