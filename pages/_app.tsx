@@ -17,7 +17,7 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
-const App = ({ Component, pageProps }: AppProps) => {
+const NextJsTraining = ({ Component, pageProps }: AppProps) => {
     return (
         <>
             <Head>
@@ -30,4 +30,4 @@ const App = ({ Component, pageProps }: AppProps) => {
     );
 };
 
-export default App;
+export default NextJsTraining;
