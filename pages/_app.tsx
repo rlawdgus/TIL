@@ -1,23 +1,21 @@
-import type { AppProps } from "next/app";
+import { AppProps, AppContext } from "next/app";
 import Head from "next/head";
-import { applyMiddleware, createStore } from "redux";
+import withRedux from "next-redux-wrapper";
 import { Provider } from "react-redux";
-import createSagaMiddleware from "redux-saga";
+import { createStore, compose, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import rootReducer, { rootSaga } from "../store";
+import rootReducer from "../store";
 
 import "../style.css";
 
-const sagaMiddleware = createSagaMiddleware();
-const store = createStore(
-    rootReducer,
-    composeWithDevTools(applyMiddleware(sagaMiddleware))
-);
+interface InitialProps {
+    Component: any;
+    pageProps: AppProps;
+    store: any;
+}
 
-sagaMiddleware.run(rootSaga);
-
-const NextJsTraining = ({ Component, pageProps }: AppProps) => {
+const NextJsTraining = ({ Component, pageProps, store }: InitialProps) => {
     return (
         <>
             <Head>
@@ -30,4 +28,22 @@ const NextJsTraining = ({ Component, pageProps }: AppProps) => {
     );
 };
 
-export default NextJsTraining;
+// NextJsTraining.getInitialProps = async (context: AppContext) => {
+//     const { ctx } = context;
+//     const { store } = ctx;
+//     store.dispatch(increase());
+
+//     console.log(store.getState());
+// };
+
+const configureStore = (initialState: any) => {
+    const middlewares = [];
+    const enhancer =
+        process.env.NODE_ENV === "production"
+            ? compose(applyMiddleware(...middlewares))
+            : composeWithDevTools(applyMiddleware(...middlewares));
+    const store = createStore(rootReducer, initialState, enhancer);
+    return store;
+};
+
+export default withRedux(configureStore)(NextJsTraining);
