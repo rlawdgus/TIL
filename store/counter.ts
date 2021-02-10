@@ -6,17 +6,22 @@ import { call, delay, put, takeLatest } from "redux-saga/effects";
 
 const INCREASE = "counter/INCREASE" as const;
 const DECREASE = "counter/DECREASE" as const;
+const STORE_VALUE = "counter/STORE_VALUE" as const;
 
 const INCREASE_ASYNC = "counter/INCREASE_ASYNC" as const;
 const DECREASE_ASYNC = "counter/DECREASE_ASYNC" as const;
 
 export const increase = createAction(INCREASE);
 export const decrease = createAction(DECREASE);
+export const storeValue = createAction(STORE_VALUE, (value: number) => value);
 
 export const increaseAsync = createAction(INCREASE_ASYNC, () => undefined);
 export const decreaseAsync = createAction(DECREASE_ASYNC, () => undefined);
 
-type CounterAction = ReturnType<typeof increase> | ReturnType<typeof decrease>;
+type CounterAction =
+    | ReturnType<typeof increase>
+    | ReturnType<typeof decrease>
+    | ReturnType<typeof storeValue>;
 
 function* increaseSaga() {
     //yield loading
@@ -55,11 +60,15 @@ const initialState: CounterState = {
 
 const counter = handleActions(
     {
-        [INCREASE]: (state: CounterState, action: CounterAction) => ({
+        [INCREASE]: (state: CounterState) => ({
             value: state.value + 1,
         }),
-        [DECREASE]: (state: CounterState, action: CounterAction) => ({
+        [DECREASE]: (state: CounterState) => ({
             value: state.value - 1,
+        }),
+        [STORE_VALUE]: (state: CounterState, action: CounterAction) => ({
+            ...state,
+            value: action.payload
         }),
     },
     initialState

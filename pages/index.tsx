@@ -5,11 +5,7 @@ import { NextPage } from "next";
 import { RootState } from "../store";
 import { increaseAsync, decreaseAsync } from "../store/counter";
 
-interface Props {
-    userAgent?: string;
-}
-
-const Index: NextPage<Props> = ({ userAgent }) => {
+const Index: NextPage = () => {
     const value = useSelector((state: RootState) => state.counter.value);
     const dispatch = useDispatch();
 
@@ -23,20 +19,12 @@ const Index: NextPage<Props> = ({ userAgent }) => {
 
     return (
         <>
-            <h1>{userAgent}</h1>
             <h1>{value}</h1>
 
             <button onClick={onIncrease}>increase</button>
             <button onClick={onDecrease}>decrease</button>
         </>
     );
-};
-
-Index.getInitialProps = async ({ req }) => {
-    console.log(req);
-    const userAgent = req ? req.headers["user-agent"] : navigator.userAgent;
-
-    return { userAgent };
 };
 
 export default Index;
