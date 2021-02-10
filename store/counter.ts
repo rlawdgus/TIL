@@ -1,22 +1,24 @@
 import { createAction, handleActions } from "redux-actions";
-import { call, delay, put, takeLatest } from "redux-saga/effects";
+import { delay, put, takeLatest } from "redux-saga/effects";
 
 //import loading
 //import api ..
 
 const INCREASE = "counter/INCREASE" as const;
 const DECREASE = "counter/DECREASE" as const;
-const STORE_VALUE = "counter/STORE_VALUE" as const;
 
 const INCREASE_ASYNC = "counter/INCREASE_ASYNC" as const;
 const DECREASE_ASYNC = "counter/DECREASE_ASYNC" as const;
 
+const STORE_VALUE = "counter/STORE_VALUE" as const;
+
 export const increase = createAction(INCREASE);
 export const decrease = createAction(DECREASE);
-export const storeValue = createAction(STORE_VALUE, (value: number) => value);
 
 export const increaseAsync = createAction(INCREASE_ASYNC, () => undefined);
 export const decreaseAsync = createAction(DECREASE_ASYNC, () => undefined);
+
+export const storeValue = createAction(STORE_VALUE, (value: number) => value);
 
 type CounterAction =
     | ReturnType<typeof increase>
@@ -68,7 +70,7 @@ const counter = handleActions(
         }),
         [STORE_VALUE]: (state: CounterState, action: CounterAction) => ({
             ...state,
-            value: action.payload
+            value: action.payload,
         }),
     },
     initialState

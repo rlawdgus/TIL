@@ -1,5 +1,6 @@
 import { AppContext } from "next/app";
 import Head from "next/head";
+import { useEffect } from "react";
 import { applyMiddleware, createStore, Middleware, StoreEnhancer } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { MakeStore, createWrapper } from "next-redux-wrapper";
@@ -10,7 +11,6 @@ import rootReducer, { rootSaga } from "../store";
 import { increase, storeValue } from "../store/counter";
 
 import "../style.css";
-import { useEffect } from "react";
 
 const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
     if (process.env.NODE_ENV !== "production") {

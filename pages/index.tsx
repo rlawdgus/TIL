@@ -1,6 +1,6 @@
-import { useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { NextPage } from "next";
+import { useCallback } from "react";
+import { useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from "../store";
 import { increaseAsync, decreaseAsync } from "../store/counter";
