@@ -1,10 +1,3 @@
-const func = (params) => {
-    console.log(params);
-};
+//네 자릿수 정수
 
-const parameters = {
-    a: 1,
-    b: 2,
-};
-
-func(parameters);
+console.log(("0000" + 12).slice(-4))
