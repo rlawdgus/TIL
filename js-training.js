@@ -1,17 +1,10 @@
-const card = {
-    suit: "heart",
-    rank: "A",
+const func = (params) => {
+    console.log(params);
 };
 
-console.log(card);
+const parameters = {
+    a: 1,
+    b: 2,
+};
 
-card.value = 14;
-
-console.log(card);
-
-delete card.rank;
-
-console.log(card);
-
-console.log("rank" in card);
-console.log("value" in card);
+func(parameters);
