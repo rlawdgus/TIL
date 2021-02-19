@@ -1,3 +1,5 @@
-//네 자릿수 정수
+console.time("answer_time");
 
-console.log(("0000" + 12).slice(-4))
+alert("confirm");
+
+console.timeEnd("answer_time");
