@@ -1,25 +1,11 @@
-function* gen() {
-    yield 1;
-    yield 2;
-    yield 3;
-    try {
-        yield 4;
-    } catch (e) {
-        console.log("error");
-    }
-    yield* [2, 4];
-    yield* "AB";
-    yield 5;
-}
+window.onload = () => {
+    let w;
 
-let iter = gen();
+    document.getElementById("open").onclick = () => {
+        w = open("newpage.html", "new page", "width=400, height=300");
+    };
 
-console.log(iter.next());
-console.log(iter.next());
-
-// console.log(iter.return(10))
-
-for (let i of iter) console.log(i);
-
-iter.throw(new Error("ERROR"));
-
+    document.getElementById("close").onclick = () => {
+        if (w) w.close();
+    };
+};
