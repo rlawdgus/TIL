@@ -1,9 +1,25 @@
-function func(a, b, c) {
-    console.log(arguments)
-    console.log(arguments.length)
-    console.log(arguments.callee)
+function* gen() {
+    yield 1;
+    yield 2;
+    yield 3;
+    try {
+        yield 4;
+    } catch (e) {
+        console.log("error");
+    }
+    yield* [2, 4];
+    yield* "AB";
+    yield 5;
 }
 
-func("a", 2, "3", 4, 5)
+let iter = gen();
 
-// 화살표 함수는 arguments가 없음
+console.log(iter.next());
+console.log(iter.next());
+
+// console.log(iter.return(10))
+
+for (let i of iter) console.log(i);
+
+iter.throw(new Error("ERROR"));
+
