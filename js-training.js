@@ -1,4 +1,17 @@
-const doglist = document.getElementById("doglist");
-const element = document.createElement("li");
-element.textContent = "불독";
-doglist.appendChild(element);
+const getScrollTop = () => {
+    if (window.pageYOffset !== undefined) return window.pageYOffset;
+    else return document.documentElement.scrollTop || document.body.scrollTop;
+};
+
+const getScrollLeft = () => {
+    if (window.pageXOffset != undefined) return window.pageXOffset;
+    else return document.documentElement.scrollLeft || document.body.scrollLeft;
+};
+
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
+
+const element = document.getElementById("sec3");
+const rect = element.getBoundingClientRect();
+scrollTo(rect.left + getScrollLeft(), rect.top + getScrollTop());
