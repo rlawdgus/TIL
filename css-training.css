@@ -1,96 +1,30 @@
-#sidebar {
-    display: none;
+.accordion > input {
+  display: none;
 }
 
-#sidebar + label {
-    display: block;
-    width: 60px;
-    height: 40px;
-    position: relative;
-    left: 0;
-    cursor: pointer;
-    z-index: 5;
-    transition: all 0.35s;
+.accordion > input:checked ~ div {
+  max-height: 200px;
 }
 
-#sidebar + label span {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 5px;
-    border-radius: 30px;
-    background-color: black;
-    transition: all 0.35s;
+.accordion > label {
+  display: block;
+  padding: 20px;
+  color: #fff;
+  font-weight: bold;
+  background-color: salmon;
+  cursor: pointer;
 }
 
-#sidebar + label span:nth-child(1) {
-    top: 0;
+.accordion > div {
+  max-height: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+  background-color: skyblue;
 }
 
-#sidebar + label span:nth-child(2) {
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-#sidebar + label span:nth-child(3) {
-    bottom: 0;
-}
-
-#sidebar:checked + label span:nth-child(1) {
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-}
-
-#sidebar:checked + label span:nth-child(2) {
-    opacity: 0;
-}
-
-#sidebar:checked + label span:nth-child(3) {
-    bottom: 50%;
-    transform: translateY(50%) rotate(-45deg);
-}
-
-.sidebar {
-    display: block;
-    width: 300px;
-    height: 100%;
-    background-color: #222;
-    position: fixed;
-    top: 0;
-    left: -300px;
-    z-index: 3;
-    transition: all 0.35s;
-}
-
-#sidebar:checked + label + .sidebar {
-    left: 0;
-}
-
-#sidebar:checked + label {
-    left: 300px;
-}
-
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    transition: all 0.35s;
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1;
-}
-
-#sidebar:checked ~ .background {
-    opacity: 1;
-    visibility: visible;
-}
-
-.content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.accordion > div > p {
+  display: inline-block;
+  padding: 20px;
+  color: #fff;
 }
