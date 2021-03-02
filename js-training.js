@@ -1,17 +1,18 @@
-const getScrollTop = () => {
-    if (window.pageYOffset !== undefined) return window.pageYOffset;
-    else return document.documentElement.scrollTop || document.body.scrollTop;
+const smoothScroll = (id, durationTime) => {
+    var TIME_INTERVAL = 30;
+    var element = document.getElementById(id);
+    if (!element) return;
+    var ey = element.getBoundingClientRect().top;
+    var dy = (ey * TIME_INTERVAL) / durationTime;
+    var direction = dy > 0 ? 1 : -1;
+    var timer = setInterval(function () {
+        scrollBy(0, dy);
+        ey -= dy;
+        if (direction * ey <= 0) {
+            clearInterval(timer);
+            element.scrollIntoView();
+        }
+    }, TIME_INTERVAL);
 };
 
-const getScrollLeft = () => {
-    if (window.pageXOffset != undefined) return window.pageXOffset;
-    else return document.documentElement.scrollLeft || document.body.scrollLeft;
-};
-
-if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
-}
-
-const element = document.getElementById("sec3");
-const rect = element.getBoundingClientRect();
-scrollTo(rect.left + getScrollLeft(), rect.top + getScrollTop());
+smoothScroll("sec3", 300);
