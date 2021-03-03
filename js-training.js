@@ -1,18 +1,15 @@
-const smoothScroll = (id, durationTime) => {
-    var TIME_INTERVAL = 30;
-    var element = document.getElementById(id);
-    if (!element) return;
-    var ey = element.getBoundingClientRect().top;
-    var dy = (ey * TIME_INTERVAL) / durationTime;
-    var direction = dy > 0 ? 1 : -1;
-    var timer = setInterval(function () {
-        scrollBy(0, dy);
-        ey -= dy;
-        if (direction * ey <= 0) {
-            clearInterval(timer);
-            element.scrollIntoView();
-        }
-    }, TIME_INTERVAL);
-};
+let x = 1;
 
-smoothScroll("sec3", 300);
+function foo() {
+    let x = 10;
+    let y = 100;
+    bar();
+}
+
+function bar() {
+    console.log(x);
+    console.log(y); //undefined
+}
+
+foo(); // 10? 1?
+bar(); // 1

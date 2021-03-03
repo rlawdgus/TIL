@@ -1,0 +1,39 @@
+자바스크립트 특징
+    인터프리터 - JIT(Just In Time) Compiler => 실행 속도 증가
+    동적 프로토타입 기반 객체 지향
+    동적 타입 - 실행 도중에 타입이 바뀐다
+    함수는 일급 객체 - 함수에 함수를 인수로 넘길 수 있다
+    함수가 클로저(변수 은닉, 영속성 보장) 정의
+
+window - 브라우저, 창 조작
+DOM - HTML 문서 요소 제어
+XMLHttpRequest - 비동기 통신 기능
+
+let, const - es6부터 추가된 변수 선언자
+    var, let 차이 - let으로 선언헌 변수의 유효 범위는 블록 안 (var은 블록 밖에서 읽어도 에러가 나지 않는다)
+
+익명함수(무명함수) - 재사용하지 않을 때 사용, 호이스팅이 되지 않고 리터럴로 이름이 붙으면 재사용할 수 있다
+
+객체 분류
+    네이티브 객체 - es사양에 정의된 객체, Object String Number Boolean Array Function JSON Math Reflect
+    호스트 객체 - 자바스크립트 실행 환경에 정의된 객체, Window Navigator History Location XMLHttpRequest API(HTML)
+    사용자 정의 객체
+
+new
+    1. 빈 오브젝트 생성
+    2. this를 오브젝트에 바인드
+    3. 오브젝트의 프로퍼티에 생성자 함수의 프로토타입 오브젝트(proto) 추가
+    4. 반환될 수 있도록 return this를 마지막에 추가
+
+ProtoType - 모든 오브젝트가 가지고 있고 여기서 메소드, 프로퍼티를 상속받는다
+
+this - 함수가 호출되어 실행되는 시점에 this값이 결정, 그 함수가 속해 있던 객체 참조
+    최상위 레벨 - 전역 객체(Window)
+    이벤트 처리기 - 이벤트가 발생한 요소 객체
+    생성자 함수 - 그 생성자로 생성한 객체
+    protoType 메소드 - 그 생성자로 생성한 객체
+    직접 호출한 함수 - 코드 앞의 객체 없을 경우 전역 객체
+
+scope - 변수 접근 범위
+scope chain - 현재 스코프에 찾는 변수가 없을 때 상위 스코프에서 찾는다
+lexical scope - 블록마다 가지는 스코프, 함수는 실행시에 렉시컬 스코프가 생긴다
