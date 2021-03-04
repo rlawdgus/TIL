@@ -1,18 +1,20 @@
-const makeCounter = () => {
-    let count = 0;
+let promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        let n = parseInt(prompt("input"));
 
-    const f = () => {
-        return count++;
-    };
+        if (n <= 10) {
+            resolve(n);
+        } else {
+            reject("error");
+        }
+    }, 1000);
+});
 
-    return f;
-};
-
-let counter = makeCounter();
-let counter2 = makeCounter();
-
-console.log(counter()); //0
-console.log(counter()); //1
-console.log(counter()); //2
-
-console.log(counter2()); //0
+promise.then(
+    (num) => {
+        console.log(num);
+    },
+    (error) => {
+        console.log(error);
+    }
+);
