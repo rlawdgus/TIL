@@ -76,3 +76,5 @@ XMLHttpRequest - Ajax 기법을 사용할 때 필요, 데이터 송수신 수단
     서버와 통신할 때 처리 방법 등록
     요청을 전송하고 통신을 시작
     동일 출처 정책 준수 => 크로스 오리진 통신 불가 => JSONP, CORS, postMessage
+
+JSONP - JSON 데이터 + 함수명, 상속 비보안 문제로 CORS로 대체
