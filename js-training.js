@@ -1,20 +1,20 @@
-let promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        let n = parseInt(prompt("input"));
+window.onload = () => {
+    let req = new XMLHttpRequest();
 
-        if (n <= 10) {
-            resolve(n);
-        } else {
-            reject("error");
-        }
-    }, 1000);
-});
+    let jsonObj;
+    req.addEventListener(
+        "load",
+        () => {
+            jsonObj = req.response;
+            console.log(jsonObj);
+        },
+        false
+    );
 
-promise.then(
-    (num) => {
-        console.log(num);
-    },
-    (error) => {
-        console.log(error);
-    }
-);
+    req.responseType = "json";
+
+    req.open("GET", "data.json", true);
+    req.send(null);
+
+    console.log(req);
+};
