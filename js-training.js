@@ -1,15 +1,18 @@
-let x = 1;
+const makeCounter = () => {
+    let count = 0;
 
-function foo() {
-    let x = 10;
-    let y = 100;
-    bar();
-}
+    const f = () => {
+        return count++;
+    };
 
-function bar() {
-    console.log(x);
-    console.log(y); //undefined
-}
+    return f;
+};
 
-foo(); // 10? 1?
-bar(); // 1
+let counter = makeCounter();
+let counter2 = makeCounter();
+
+console.log(counter()); //0
+console.log(counter()); //1
+console.log(counter()); //2
+
+console.log(counter2()); //0
