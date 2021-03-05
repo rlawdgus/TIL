@@ -3,15 +3,19 @@
     <head>
         <meta charset="UTF-8" />
         <script src="./js-training.js"></script>
+        <style>
+            #color {
+                margin-bottom: 10px;
+            }
+            #dropbox {
+                width: 150px;
+                padding: 50px;
+                border: 1px solid black;
+            }
+        </style>
     </head>
     <body>
-        <input type="text" id="message" size="60" />
-        <input type="button" id="button" value="보내기" />
-        <iframe
-            src="other.html"
-            id="frame"
-            width="300px"
-            height="200px"
-        ></iframe>
+        <input type="color" id="color" draggable="true" />
+        <div id="dropbox">이곳에 드롭하세요</div>
     </body>
 </html>

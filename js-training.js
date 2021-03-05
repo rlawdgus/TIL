@@ -1,15 +1,17 @@
 window.onload = () => {
-    let frameWindow = document.getElementById("frame").contentWindow;
-    let message = document.getElementById("message");
-    let button = document.getElementById("button");
+    let color = document.getElementById("color");
+    let dropbox = document.getElementById("dropbox");
 
-    let targetOrigin = "/";
+    color.ondragstart = (e) => {
+        e.dataTransfer.setData("text/plain", e.target.value);
+    };
 
-    button.addEventListener(
-        "click",
-        () => {
-            frameWindow.postMessage(message.nodeValue, targetOrigin);
-        },
-        false
-    );
+    dropbox.ondragover = (e) => {
+        e.preventDefault();
+    };
+
+    dropbox.ondrop = (e) => {
+        e.preventDefault();
+        e.target.style.backgroundColor = e.dataTransfer.getData("text/plain");
+    };
 };
