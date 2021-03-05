@@ -1,17 +1,3 @@
-window.onload = () => {
-    let color = document.getElementById("color");
-    let dropbox = document.getElementById("dropbox");
-
-    color.ondragstart = (e) => {
-        e.dataTransfer.setData("text/plain", e.target.value);
-    };
-
-    dropbox.ondragover = (e) => {
-        e.preventDefault();
-    };
-
-    dropbox.ondrop = (e) => {
-        e.preventDefault();
-        e.target.style.backgroundColor = e.dataTransfer.getData("text/plain");
-    };
-};
+const a1 = document.getElementById("a1");
+const blob1 = new Blob(["Hello ", "download!"], { type: "text/plain" });
+a1.href = URL.createObjectURL(blob1);
