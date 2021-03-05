@@ -1,11 +1,15 @@
-const show = (data) => {
-    console.log(data.name);
-    console.log(data.price);
-};
-
 window.onload = () => {
-    let url = "jsonp.js";
-    let script = document.createElement("script");
-    script.setAttribute("src", url);
-    document.getElementsByTagName("head")[0].appendChild(script);
+    let frameWindow = document.getElementById("frame").contentWindow;
+    let message = document.getElementById("message");
+    let button = document.getElementById("button");
+
+    let targetOrigin = "/";
+
+    button.addEventListener(
+        "click",
+        () => {
+            frameWindow.postMessage(message.nodeValue, targetOrigin);
+        },
+        false
+    );
 };

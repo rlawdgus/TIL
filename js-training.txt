@@ -83,3 +83,8 @@ CORS(Cross Origin Resource Sharing) - 도메인, 프로토콜, 포트가 다른 
     XMLHttpRequest level 1에서는 크로스 오리진 통신 금지이고 level 2에서는 제한적으로 허용하는데 이 사양을 CORS라 한다
     데이터를 가져오는 대상의 신뢰도에 따라 허용
     Access-Control-Allow-Origin이라는 HTTP 헤더를 추가해야 한다
+
+postMessage
+    open으로 창을 열면 부모 창과 자식 창이 서로 Window객체를 참조해 조작할 수 있다
+    두 창 서로 페이지 출처가 다르기 때문에 상대의 콘텐츠를 가져올 수 없는데
+    postMessage로 메세지를 비동기적으로 주고받을 수 있다(프로퍼티 참조, 메소드 실행은 불가)
