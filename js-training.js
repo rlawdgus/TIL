@@ -1,44 +1,36 @@
-window.onload = () => {
-    const input = document.getElementById("input");
+window.onload = function () {
+    var N = "10000000";
+    var mainstart = document.getElementById("mainstart");
+    var workerstart = document.getElementById("workerstart");
+    var clear = document.getElementById("clear");
+    var output = document.getElementById("output");
+    startClock();
 
-    input.addEventListener(
-        "change",
-        (e) => {
-            const reader = new FileReader();
-            reader.onload = () => {
-                const img = new Image();
-                img.onload = () => {
-                    const canvas = document.createElement("canvas");
-                    const context = canvas.getContext("2d");
-                    context.drawImage(img, 0, 0);
-
-                    //back & white
-                    // const imageData = context.getImageData(
-                    //     0,
-                    //     0,
-                    //     canvas.width,
-                    //     canvas.height
-                    // );
-                    // const data = imageData.data;
-
-                    // for (let i = 0; i <= data.length; i += 4) {
-                    //     const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-                    //     data[i] = avg;
-                    //     data[i + 1] = avg;
-                    //     data[i + 2] = avg;
-                    // }
-
-                    // context.putImageData(imageData, 0, 0);
-
-                    document.body.appendChild(img);
-                };
-
-                img.src = reader.result;
-            };
-
-            // reader.readAsText(input.files[0]);
-            reader.readAsDataURL(input.files[0]);
-        },
-        false
-    );
+    // Worker 객체를 생성한다
+    var worker = new Worker("worker.js");
+    // message 이벤트 처리기를 등록한다
+    worker.onmessage = function (e) {
+        console.log("recieved: " + new Date());
+        output.innerHTML = N + " 이하의 최대 소수 = " + e.data;
+    };
+    // 워커로 처리한다
+    workerstart.onclick = function () {
+        console.log("send: " + new Date());
+        worker.postMessage(N);
+    };
+    // 메인 스레드로 처리한다
+    mainstart.onclick = function () {
+        output.innerHTML = N + " 이하의 최대 소수 = " + prime(N);
+    };
+    // 결과를 지운다
+    clear.onclick = function () {
+        output.innerHTML = "";
+    };
 };
+function startClock() {
+    var clock = document.getElementById("clock");
+    var startTime = new Date();
+    setInterval(function () {
+        clock.innerHTML = ((new Date() - startTime) / 1000).toFixed(1);
+    }, 100);
+}

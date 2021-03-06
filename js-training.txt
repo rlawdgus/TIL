@@ -93,3 +93,5 @@ MVC 모델
     Model - 데이터와 처리 로직
     View - 사용자가 볼 수 있는 형태로 표현
     Controller - 사용자의 입력을 메세지로 전달
+
+Web Workers - 자바스크립트에서 멀티스레드로 병렬 처리를 할 수 있는 API
