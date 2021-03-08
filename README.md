@@ -18,3 +18,30 @@
 -   인터페이스
 -   튜플
 -   제네릭 타입 - 여러 타입 취급
+-   대수 타입 - 합집합 타입(|), 교집합 타입(&)
+-   템플릿 - `(backtick), ${변수}, 변수 값과 문자열 조합
+
+# 타입스크립트 기본 제공 타입
+
+-   number
+-   boolean
+-   string
+-   object - 객체, (interface, class ..)
+-   any - 타입추론을 할 수 없거나 필요없는 변수, 최상위 타입
+-   undefined - undefined만 가짐, 최하위 타입
+
+# 인터페이스
+
+-   대상이 객체일 때 any타입처럼 동작하지 않게 하기 위함
+-   선택 속성 구문(?) - 속성이 있어도 없어도 됨
+-   익명 인터페이스 - 함수 구현이나 재사용하지 않을 때 사용
+
+# 클래스
+
+-   캡슐화, 상속, 다형성
+-   접근 제한자 - private, protected, public(default)
+    -   private - class 내부에서만 접근, 자식class 안됨(상속 x)
+    -   protected - 자식class 접근 가능(상속 o, 인터페이스 x)
+    -   public - 모두 접근 가능
+    -   readonly - 읽기전용
+-   생성자(constructor)

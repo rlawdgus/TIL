@@ -1,6 +1,15 @@
-class Container<T> {
-    constructor(public vlaue: T) {}
+class Person {
+    constructor(public name: string, public age?: number) {}
 }
 
-let numberContainer: Container<number> = new Container<number>(1);
-let stringContainer: Container<string> = new Container<string>("Hello world !");
+class Person2 {
+    name: string;
+    age?: number;
+    constructor(name: string, age?: number) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+
+//Person === Person2
