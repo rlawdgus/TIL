@@ -1,23 +1,10 @@
-const address: any = {
-    country: "Korea",
-    city: "Busan",
-    address1: "Dong-gu",
-    address2: "Choryang",
-};
+interface INameable {
+    name: string;
+}
 
-const { country, city, ...detail } = address;
-//잔여 연산자(rest operator)
+const obj: object = { name: "Jack" };
 
-console.log(detail);
+const name1 = (<INameable>obj).name;
+const name2 = (obj as INameable).name;
 
-const part = { country: "Korea" };
-const part2 = { city: "Busan" };
-const part3 = {
-    address1: "Dong-gu",
-    address2: "Choryang",
-};
-
-const address2: any = { ...part, ...part2, ...part3 };
-//전개 연산자(spread operator)
-
-console.log(address2);
+console.log(name1 === name2);
