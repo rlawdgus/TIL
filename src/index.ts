@@ -1,15 +1,23 @@
-class Person {
-    constructor(public name: string, public age?: number) {}
-}
+const address: any = {
+    country: "Korea",
+    city: "Busan",
+    address1: "Dong-gu",
+    address2: "Choryang",
+};
 
-class Person2 {
-    name: string;
-    age?: number;
-    constructor(name: string, age?: number) {
-        this.name = name;
-        this.age = age;
-    }
-}
+const { country, city, ...detail } = address;
+//잔여 연산자(rest operator)
 
+console.log(detail);
 
-//Person === Person2
+const part = { country: "Korea" };
+const part2 = { city: "Busan" };
+const part3 = {
+    address1: "Dong-gu",
+    address2: "Choryang",
+};
+
+const address2: any = { ...part, ...part2, ...part3 };
+//전개 연산자(spread operator)
+
+console.log(address2);
