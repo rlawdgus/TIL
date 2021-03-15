@@ -1,20 +1,92 @@
-.video {
-    position: relative;
-    margin: 0 auto;
-    max-width: 800px;
-    width: 100%;
+.hoverbox {
+    .screen {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
 
-    & > div {
-        width: 100%;
-        padding-bottom: 56.25%;
-
-        & > iframe {
+        & [class*="hud"] {
             position: absolute;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+            transition: all 1s;
         }
+
+        & [class*="hud"]:hover {
+            opacity: 1;
+        }
+
+        .hud01 {
+            width: 300px;
+            height: 300px;
+            background-color: #222;
+            animation: rolling01 5s linear infinite;
+        }
+
+        .hud02 {
+            width: 150px;
+            height: 150px;
+            background-color: #1fe;
+            animation: rolling02 10s infinite alternate;
+        }
+
+        .hud03 {
+            width: 100px;
+            height: 100px;
+            background-color: salmon;
+            animation: rolling03 6s infinite alternate;
+        }
+    }
+}
+
+@keyframes rolling01 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes rolling02 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0);
+    }
+
+    30% {
+        transform: translate(-50%, -50%) rotate(200deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate((360deg));
+    }
+}
+
+@keyframes rolling03 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0) scale(1);
+    }
+
+    35% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+    }
+
+    40% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(0.5);
+    }
+
+    60% {
+        transform: translate(-50%, -50%) rotate(400deg) scale(0.5);
+    }
+
+    65% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.2);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
     }
 }
