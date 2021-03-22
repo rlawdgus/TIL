@@ -1,92 +1,37 @@
-.hoverbox {
-    .screen {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+input[type="radio"] {
+    display: none;
 
-        & [class*="hud"] {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0.1;
-            transition: all 1s;
-        }
+    & + label {
+        display: inline-block;
+        padding: 20px;
+        background-color: #ccc;
+        color: #999;
+        font-size: 14px;
+        cursor: pointer;
+    }
 
-        & [class*="hud"]:hover {
-            opacity: 1;
-        }
-
-        .hud01 {
-            width: 300px;
-            height: 300px;
-            background-color: #222;
-            animation: rolling01 5s linear infinite;
-        }
-
-        .hud02 {
-            width: 150px;
-            height: 150px;
-            background-color: #1fe;
-            animation: rolling02 10s infinite alternate;
-        }
-
-        .hud03 {
-            width: 100px;
-            height: 100px;
-            background-color: salmon;
-            animation: rolling03 6s infinite alternate;
-        }
+    &:checked + label {
+        background-color: #aaa;
+        color: #000;
     }
 }
 
-@keyframes rolling01 {
-    0% {
-        transform: translate(-50%, -50%) rotate(0);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+.conbox {
+    width: 500px;
+    height: 600px;
+    background-color: #aaa;
+    margin: 0 auto;
+    display: none;
 }
 
-@keyframes rolling02 {
-    0% {
-        transform: translate(-50%, -50%) rotate(0);
-    }
-
-    30% {
-        transform: translate(-50%, -50%) rotate(200deg);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) rotate((360deg));
-    }
+input[id="tab1"]:checked ~ .cn1 {
+    display: block;
 }
 
-@keyframes rolling03 {
-    0% {
-        transform: translate(-50%, -50%) rotate(0) scale(1);
-    }
+input[id="tab2"]:checked ~ .cn2 {
+    display: block;
+}
 
-    35% {
-        transform: translate(-50%, -50%) rotate(360deg) scale(1);
-    }
-
-    40% {
-        transform: translate(-50%, -50%) rotate(360deg) scale(0.5);
-    }
-
-    60% {
-        transform: translate(-50%, -50%) rotate(400deg) scale(0.5);
-    }
-
-    65% {
-        transform: translate(-50%, -50%) rotate(0deg) scale(0.2);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg) scale(1);
-    }
+input[id="tab3"]:checked ~ .cn3 {
+    display: block;
 }
