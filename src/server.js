@@ -32,7 +32,7 @@ app.get("*", (req, res) => {
             `<div id="root">${renderString}</div>`
         )
         .replace("__DATA_FROM_SERVER__", JSON.stringify(initialData))
-        .replace("__STYLE_FROM_SERVER", styles);
+        .replace("__STYLE_FROM_SERVER__", styles);
     res.send(result);
 });
 app.listen(3000);
