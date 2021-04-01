@@ -1,0 +1,33 @@
+.check-box{
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #e3e3e3;
+    margin-bottom: 1px;
+
+    &:first-child{
+        margin-bottom: 20px;
+    }
+    
+    &:hover{
+        background-color: #d6d6d6;
+    }
+
+    & > svg{
+        width: 75%;
+        height: 75%;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);    
+    }
+}
+
+.checked{
+    background-color: skyblue;
+
+    &:hover{
+        background-color: #1ab2ff;
+    }
+}
