@@ -1,0 +1,11 @@
+{
+    "presets": ["@babel/preset-react"],
+    "plugins": ["@babel/plugin-transform-template-literals"],
+    "overrides": [
+        {
+            "include": "./src",
+            "exclude": "./src/code2.js",
+            "plugins": ["@babel/plugin-transform-arrow-functions"]
+        }
+    ]
+}
