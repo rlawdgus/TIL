@@ -1,0 +1,27 @@
+{
+    "name": "ssr-training",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {
+        "@babel/cli": "^7.13.10",
+        "@babel/core": "^7.13.10",
+        "@babel/plugin-transform-modules-commonjs": "^7.13.8",
+        "@babel/preset-env": "^7.13.10",
+        "@babel/preset-react": "^7.12.13",
+        "babel-loader": "^8.2.2",
+        "clean-webpack-plugin": "^3.0.0",
+        "express": "^4.17.1",
+        "html-webpack-plugin": "^5.3.1",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "styled-components": "^5.2.1",
+        "webpack": "^5.26.3",
+        "webpack-cli": "^4.5.0"
+    },
+    "scripts": {
+        "build-server": "babel src --out-dir dist-server --config-file ./.babelrc.server.js",
+        "build": "npm run build-server && webpack",
+        "start": "node dist-server/server.js"
+    }
+}
