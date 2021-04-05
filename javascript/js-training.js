@@ -1,36 +1,49 @@
-window.onload = function () {
-    var N = "10000000";
-    var mainstart = document.getElementById("mainstart");
-    var workerstart = document.getElementById("workerstart");
-    var clear = document.getElementById("clear");
-    var output = document.getElementById("output");
-    startClock();
+const draggables = document.querySelectorAll(".draggable");
+const containers = document.querySelectorAll(".container");
 
-    // Worker 객체를 생성한다
-    var worker = new Worker("worker.js");
-    // message 이벤트 처리기를 등록한다
-    worker.onmessage = function (e) {
-        console.log("recieved: " + new Date());
-        output.innerHTML = N + " 이하의 최대 소수 = " + e.data;
-    };
-    // 워커로 처리한다
-    workerstart.onclick = function () {
-        console.log("send: " + new Date());
-        worker.postMessage(N);
-    };
-    // 메인 스레드로 처리한다
-    mainstart.onclick = function () {
-        output.innerHTML = N + " 이하의 최대 소수 = " + prime(N);
-    };
-    // 결과를 지운다
-    clear.onclick = function () {
-        output.innerHTML = "";
-    };
+draggables.forEach((draggable) => {
+    draggable.addEventListener("dragstart", () => {
+        draggable.classList.add("dragging");
+    });
+
+    draggable.addEventListener("dragend", () => {
+        draggable.classList.remove("dragging");
+    });
+});
+
+containers.forEach((container) => {
+    container.addEventListener("dragover", (e) => {
+        e.preventDefault();
+
+        const afterElement = getDragAfterElement(container, e.clientY);
+
+        const draggable = document.querySelector(".dragging");
+        container.appendChild(draggable);
+
+        if (afterElement == null) {
+            container.appendChild(draggable);
+        } else {
+            container.insertBefore(draggable, afterElement);
+        }
+    });
+});
+
+const getDragAfterElement = (container, y) => {
+    const draggalbeElements = [
+        ...container.querySelectorAll(".draggable:not(.dragging)"),
+    ];
+
+    return draggalbeElements.reduce(
+        (closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child };
+            } else {
+                return closest;
+            }
+        },
+        { offset: Number.NEGATIVE_INFINITY }
+    ).element;
 };
-function startClock() {
-    var clock = document.getElementById("clock");
-    var startTime = new Date();
-    setInterval(function () {
-        clock.innerHTML = ((new Date() - startTime) / 1000).toFixed(1);
-    }, 100);
-}

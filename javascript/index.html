@@ -2,14 +2,19 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <script src="./js-training.js"></script>
-        <script src="./prime.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="js-training.js" defer></script>
+        <title>Drag n Drop</title>
     </head>
     <body>
-        <div id="clock"></div>
-        <input type="button" value="메인 스레드로 처리하기" id="mainstart" />
-        <input type="button" value="워커 스레드로 처리하기" id="workerstart" />
-        <input type="button" value="결과를 지우기" id="clear" />
-        <div id="output"></div>
+        <div class="container">
+            <p class="draggable" draggable="true">1</p>
+            <p class="draggable" draggable="true">2</p>
+        </div>
+        <div class="container">
+            <p class="draggable" draggable="true">3</p>
+            <p class="draggable" draggable="true">4</p>
+        </div>
     </body>
 </html>
