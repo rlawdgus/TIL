@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Info from "./Info";
 
 const App = () => {
     const [color, setColor] = useState("");
     const [movie, setMovie] = useState("");
 
-    const onChangeHandler = (e) => {
+    const onChangeHandler = useCallback((e) => {
         if (e.target.id === "color") setColor(e.target.value);
         else setMovie(e.target.value);
-    };
+    }, []);
 
     return (
         <div className="App">
