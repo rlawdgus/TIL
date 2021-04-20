@@ -1,59 +1,51 @@
-import { useCallback, useState } from "react";
-import Info from "./Info";
+import { useCallback, useRef, useState } from "react";
+import useBookSearch from "./useBookSearch";
 
 const App = () => {
-    const [color, setColor] = useState("");
-    const [movie, setMovie] = useState("");
+    const [query, setQuery] = useState("");
+    const [pageNumber, setPageNumber] = useState(1);
+    const { books, hasMore, loading, error } = useBookSearch(query, pageNumber);
 
-    const onChangeHandler = useCallback((e) => {
-        if (e.target.id === "color") setColor(e.target.value);
-        else setMovie(e.target.value);
-    }, []);
+    const observer = useRef();
+    const lastBookElementRef = useCallback(
+        (node) => {
+            if (loading) return;
+            if (observer.current) observer.current.disconnect();
+
+            observer.current = new IntersectionObserver((enteries) => {
+                if (enteries[0].isIntersecting && hasMore) {
+                    setPageNumber((prevPageNumber) => prevPageNumber + 1);
+                }
+            });
+
+            if (node) observer.current.observe(node);
+            console.log(node);
+        },
+        [loading, hasMore]
+    );
+
+    const handleSearch = (e) => {
+        setQuery(e.target.value);
+        setPageNumber(1);
+    };
 
     return (
-        <div className="App">
-            <div>
-                <label>
-                    What is your favorite color of rainbow ?
-                    <input
-                        id="color"
-                        value={color}
-                        onChange={onChangeHandler}
-                    />
-                </label>
-            </div>
-            <div>
-                What is your favorite movie among these ?
-                <label>
-                    <input
-                        type="radio"
-                        name="movie"
-                        value="Marriage Story"
-                        onChange={onChangeHandler}
-                    />
-                    Marriage Story
-                </label>
-                <label>
-                    <input
-                        type="radio"
-                        name="movie"
-                        value="The Fast And The Furious"
-                        onChange={onChangeHandler}
-                    />
-                    The Fast And The Furious
-                </label>
-                <label>
-                    <input
-                        type="radio"
-                        name="movie"
-                        value="Avengers"
-                        onChange={onChangeHandler}
-                    />
-                    Avengers
-                </label>
-            </div>
-            <Info color={color} movie={movie} />
-        </div>
+        <>
+            <input type="text" value={query} onChange={handleSearch}></input>
+            {books.map((book, index) => {
+                if (books.length === index + 1) {
+                    return (
+                        <div ref={lastBookElementRef} key={book}>
+                            {book}
+                        </div>
+                    );
+                } else {
+                    return <div key={book}>{book}</div>;
+                }
+            })}
+            <div>{loading && "Loading..."}</div>
+            <div>{error && "Error"}</div>
+        </>
     );
 };
 
