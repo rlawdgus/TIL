@@ -1,49 +1,19 @@
-const draggables = document.querySelectorAll(".draggable");
-const containers = document.querySelectorAll(".container");
+const io = new IntersectionObserver((entries) => {
+    console.log(entries);
 
-draggables.forEach((draggable) => {
-    draggable.addEventListener("dragstart", () => {
-        draggable.classList.add("dragging");
-    });
-
-    draggable.addEventListener("dragend", () => {
-        draggable.classList.remove("dragging");
-    });
-});
-
-containers.forEach((container) => {
-    container.addEventListener("dragover", (e) => {
-        e.preventDefault();
-
-        const afterElement = getDragAfterElement(container, e.clientY);
-
-        const draggable = document.querySelector(".dragging");
-        container.appendChild(draggable);
-
-        if (afterElement == null) {
-            container.appendChild(draggable);
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("tada");
+            console.log("add");
         } else {
-            container.insertBefore(draggable, afterElement);
+            entry.target.classList.remove("tada");
+            console.log("remove");
         }
     });
 });
 
-const getDragAfterElement = (container, y) => {
-    const draggalbeElements = [
-        ...container.querySelectorAll(".draggable:not(.dragging)"),
-    ];
+const boxElementList = document.querySelectorAll(".box");
 
-    return draggalbeElements.reduce(
-        (closest, child) => {
-            const box = child.getBoundingClientRect();
-            const offset = y - box.top - box.height / 2;
-
-            if (offset < 0 && offset > closest.offset) {
-                return { offset: offset, element: child };
-            } else {
-                return closest;
-            }
-        },
-        { offset: Number.NEGATIVE_INFINITY }
-    ).element;
-};
+boxElementList.forEach((element) => {
+    io.observe(element);
+});
