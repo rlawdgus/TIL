@@ -191,7 +191,7 @@ postMessage로 메세지를 비동기적으로 주고받을 수 있다(프로퍼
 
 # in JS 33 Concepts
 
-## 1. 단일 콜스택
+## 1. 단일 콜스택, 9. 이벤트 루프
 
 -   싱글 스레드 => 한 번에 1개의 작업
 
@@ -212,11 +212,20 @@ postMessage로 메세지를 비동기적으로 주고받을 수 있다(프로퍼
     이 요청을 동기화 함수로 실행한다면 실행하는 동안 다른 일을 할 수 없음 (싱글 스레드)
 
 -   비동기 실행 방식
+
     1. DOM 이벤트, http 요청, setTimeout같은 비동기 이벤트들을 브라우저의 스레드(C++로 구현) API 호출
     2. 그 결과들을 인큐(만약 바로 스택에 넣으면 결과가 랜덤하게 나온다)
     3. 이벤트 루프(브라우저, nodejs)가 스택이 비어있는지 확인하고 큐의 첫 번째 메세지를 푸시한다
 
-## 2. 원시타입
+    브라우저 구조
+    자바스크립트
+    힙 - 객체등 메모리 할당
+    스택 - js 실행을 위한 싱글스레드
+    브라우저(웹) API - 비동기 작업 실행, 큐로 결과나 메세지 인큐
+    큐 - 이벤트 루프에 의해 스택으로 디큐
+    이벤트 루프 - 자바스크립트 스택 상태 확인 후 비었을 시 디큐, 푸시
+
+## 2. 원시타입, 3. 값 참조
 
 -   객체가 아닌 것(boolean, null, undefined, number, string, symbol(ES6))
 -   불변적(재할당과는 다른 개념, 값 자체는 절대 바뀔 수 없다)
@@ -232,7 +241,7 @@ postMessage로 메세지를 비동기적으로 주고받을 수 있다(프로퍼
 
 -   숫자 문자(소숫점, "1", "2", ...)를 포함해 연산 => 숫자(숫자가 아닌 것이 있으면 NaN)
 -   +는 수학적 덧셈, 문자열 합치기, 숫자를 문자로 바꾸려 함
--   객체(toString을 가짐)일 때 수학적 표현식이 있으면 숫자로, 아니면 문자열로 변환, toString과 valueOf를 다 가지고 있으면 valueOf 사용
+-   객체(toString을 가짐)일 때 수학적 표현식(\*, / ...)이 있으면 숫자로, 아니면 문자열로 변환, toString과 valueOf를 다 가지고 있으면 valueOf 사용
 -   배열은 반점을 추가한 문자열(join과 비슷) 반환, 숫자 문자 하나 있을 경우 연산(빈 것은 0)
 -   true => 1, false => 0
 -   falsy(false로 변환) => false, 0, null, undefined, "", NaN, -0
@@ -261,3 +270,29 @@ postMessage로 메세지를 비동기적으로 주고받을 수 있다(프로퍼
 ## 8. IIFE
 
 -   함수를 식으로 변환하고 즉시 실행
+
+    (func () {}()) === (func () {})()
+
+## 10. 스케줄링
+
+-   setTimeout(func, 1000) or setTimeout(() => func(arg1, ...), 1000)
+    setTimeout(func(arg1,..), 1000) => func 함수를 실행시켜서 func의 실행결과가 전달됨
+
+-   clearTimeout(timerId)
+    setTimeout은 timer identifier를 반환함
+    clearTimeout을 쓰기 위해선 timer id를 인자로 넘겨야 함
+
+-   setInterval(func, 1000) or setInterval(() => func(arg1, ...), 1000)
+
+-   clearInterval(timerId)
+    setInterval도 timer identifier를 반환하므로 이를 넘겨야 함
+
+-   재귀적 setTimeout
+    setInterval처럼 주기적인 실행
+    setInterval실행시 인자로 넘긴 텀은 함수 실행시간 포함 (함수 실행시간의 차이만큼 텀도 차이가 남)
+    재귀적 setTimeout은 함수 실행시간을 포함하지 않기 때문에 확정적인 텀을 줄 수 있음
+    상황에 따라 유연하게 텀을 주는 것도 가능
+
+-   setTimeout(func, 0) => 비동기적으로 실행을 위한 코드
+
+## 13. DOM
