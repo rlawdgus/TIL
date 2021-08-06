@@ -58,6 +58,10 @@
 
 ### 구조
 
+    (리덕스)    redux react-redux redux-actions
+    (사가)      react-saga
+    (디버깅)    redux-devtools-extension
+
     store/
     	counter.js (리덕스 모듈)
             => 액션타입 + 생성함수 (createAction) + 리듀서 (handleActions)
