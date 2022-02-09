@@ -61,8 +61,8 @@ Object.preventExtensions(person); // person.name = 'Lee' - 무시, strict mode�
 
 // 객체 밀봉(읽기, 쓰기만 가능)
 Object.seal(person);
-// person.name = 'Lee' - 무시, strict
-// delete person.name = 'Lee' - 무시, strict
+// person.name = 'Lee' - 무시, strict mode에서는 에러
+// delete person.name = 'Lee' - 무시, strict mode에서는 에러
 // Object.defineProperty(person, 'name', {configurable: true}) - 에러
 
 // 객체 동결(읽기만 가능, 얕은 변경 금지)

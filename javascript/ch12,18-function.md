@@ -113,3 +113,33 @@
 ### 참고
 
 [즉시 실행 함수 쓰는 이유]https://velog.io/@tlatjdgh3778/%EC%A6%89%EC%8B%9C-%EC%8B%A4%ED%96%89-%ED%95%A8%EC%88%98IIFE%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC
+
+#
+
+## 일급 객체
+
+    1. 무명의 리터럴로 생성할 수 있다.(런타임에 생성이 가능하다.)
+    2. 변수나 자료구조에 저장할 수 있다.
+    3. 함수의 매개변수에 전달할 수 있다.
+    4. 함수의 반환값으로 사용할 수 있다.
+
+#
+
+## 함수 객체 프로퍼티
+
+    - arguments: 전달된 인수들 정보를 담고 있는 유사 배열 객체(length를 가지고 순회 가능한 객체)
+    - caller: 함수 자신을 호출한 함수를 가리키는 비표준 프로퍼티
+    - length: 명시된 매개변수 갯수(매개변수를 더 많이 넣어도 바뀌지 않는다.)
+    - name: 함수 이름
+    - __proto__: 모든 객체가 가지는 내부 슬롯([[Prototype]])
+
+```javascript
+function sum() {
+    const array = Array.prototype.slice.call(arguments);
+    // array.map...
+}
+
+function sum(...args) {
+    // args.map
+}
+```
