@@ -173,7 +173,112 @@ me.sayHello(); // error
 A instance of B
 
 // B 생성자 함수의 prototype에 바인딩된 객체가
-// A 객체의 프로토타입 체인상에 존하면 true
+// A 객체의 프로토타입 체인 상에 존하면 true
 ```
 
 #
+
+## 직접 상속
+
+```javascript
+const obj = Object.create(PROTOTYPE);
+
+const obj2 = {
+    __proto__: PROTOTYPE,
+};
+```
+
+#
+
+## 정적 프로퍼티/메소드
+
+    생성자 함수도 객체이므로 자신의 프로퍼티/메소드를 소유할 수 있다.
+    이 프로퍼티/메소드가 정적 프로퍼티/메소드이고
+    인스턴스는 쓸 수 없다.
+
+```javascript
+function Person(name) {
+    this.name = name;
+}
+
+Person.staticProp = "static prop";
+Person.staticMethod = function () {
+    console.log("static method");
+};
+
+const me = new Person("asd");
+
+Person.staticMethod(); // static method
+me.staticMethod(); // error
+```
+
+#
+
+## 프로퍼티 존재 확인
+
+    KEY in OBJECT: KEY가 OBJECT의 프로토타입 체인 상에 있으면 true
+
+```javascript
+const person = {};
+
+console.log("toString" in person); // true
+```
+
+#
+
+## 프로퍼티 열거
+
+    for ... in: 객체의 프로토타입 체인 상에 있는
+    모든 프로퍼티 중에서
+    [[Enumerable]]가 true인 프로퍼티를 순회하며 열거한다.
+
+```javascript
+const person = {
+    name: "asd",
+    address: "qwe",
+    __proto__: { age: 20 },
+};
+
+for (const key in person) {
+    console.log(`${key}: ${person[key]}`);
+}
+
+// name: 'asd',
+// address: 'qwe',
+// age: 20 - 상속받은 것까지 순회
+
+// 객체 자신의 프로퍼티만 순회
+for (const key in person) {
+    if (person.hasOwnProperty(key)) console.log(`${key}: ${person[key]}`);
+}
+
+console.log(Object.keys(person)); // ["name", "address"]
+console.log(Object.values(person)); // ["asd", "qwe"]
+console.log(Object.entries(person)); // ["name", "address"], ["asd", "qwe"]
+
+Object.entries(person).forEach(([key, value]) => console.log(key, value));
+// name asd
+// address qwe
+```
+
+    배열은 for, for ... of, forEach 사용 권장
+
+```javascript
+const arr = [1, 2, 3];
+arr.x = 10; // 배열(객체)의 프로퍼티
+
+for (const i in arr) {
+    console.log(arr[i]); // 1 2 3 10
+}
+
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]); // 1 2 3
+}
+
+arr.forEach((i) => console.log(i)); // 1 2 3
+
+// 변수 선언문에서 선언한 변수에 키가 아닌 값을 할당한다.
+for (const i of arr) {
+    console.log(i); // 1 2 3
+}
+```
