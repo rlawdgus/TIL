@@ -110,12 +110,6 @@
 
 #
 
-### 참고
-
-[즉시 실행 함수 쓰는 이유]https://velog.io/@tlatjdgh3778/%EC%A6%89%EC%8B%9C-%EC%8B%A4%ED%96%89-%ED%95%A8%EC%88%98IIFE%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC
-
-#
-
 ## 일급 객체
 
     1. 무명의 리터럴로 생성할 수 있다.(런타임에 생성이 가능하다.)
@@ -143,3 +137,9 @@ function sum(...args) {
     // args.map
 }
 ```
+
+#
+
+## 참고
+
+[즉시 실행 함수 쓰는 이유]https://velog.io/@tlatjdgh3778/%EC%A6%89%EC%8B%9C-%EC%8B%A4%ED%96%89-%ED%95%A8%EC%88%98IIFE%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC
