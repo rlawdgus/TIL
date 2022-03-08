@@ -60,3 +60,9 @@ $button.addEventListener("click", function () {});
     이벤트가 발생한 가장 안쪽 요소
 
     event.currentTarget(=== this): (버블링 중)현재 실행 중인 핸들러가 할당된 요소
+
+#
+
+### 참고
+
+-   [버블링, evnet,target] https://ko.javascript.info/bubbling-and-capturing
