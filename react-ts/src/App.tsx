@@ -1,13 +1,21 @@
-import { useEffect } from "react";
+import { useState } from "react";
+
+import CounterState from "./components/CounterState";
+import CounterProps from "./components/CounterProps";
 
 const App = () => {
-    console.log("App constructor");
+    const [num, setNum] = useState<number>(0);
 
-    useEffect(() => {
-        console.log("App componentDidMount");
-    }, []);
+    const increase = () => setNum(num + 1);
+    const decrease = () => setNum(num - 1);
 
-    return <>{console.log("App render")}</>;
+    return (
+        <>
+            <CounterState />
+            <CounterProps num={num} increase={increase} decrease={decrease} />
+            {console.log("App render")}
+        </>
+    );
 };
 
 export default App;
