@@ -18,17 +18,40 @@
 
     "javascript in markdown": {
         "prefix": "js",
-        "body": ["```javascript", "$0", "```"],
+        "body": ["```javascript", "$1", "```"],
         "description": "javascript in markdown"
     },
     "class name in react": {
         "prefix": "clas",
-        "body": ["className={$0}"],
+        "body": ["className={$1}"],
         "description": "class name in react"
     },
     "on click name in react": {
         "prefix": "onc",
-        "body": ["onClick={$0}"],
+        "body": ["onClick={$1}"],
         "description": "on click name in react"
+    },
+    "react component": {
+        "prefix": "rec",
+        "body": [
+            "$0",
+            "",
+            "const $1 = () => {",
+            "return <></>",
+            "}",
+            "",
+            "export default $2;"
+        ],
+        "description": "react component"
+    },
+    "react use effect": {
+        "prefix": "usee",
+        "body": ["useEffect(() => {", "$1", "}, [])"],
+        "description": "react use effect"
+    },
+    "console log": {
+        "prefix": "cl",
+        "body": ["console.log($1)"],
+        "description": "console log"
     }
 }
