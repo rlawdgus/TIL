@@ -16,20 +16,20 @@
     // 	"description": "Log output to console"
     // }
 
-    "javascript in markdown": {
-        "prefix": "js",
+    "javascript code in markdown": {
+        "prefix": "mdjs",
         "body": ["```javascript", "$1", "```"],
-        "description": "javascript in markdown"
+        "description": "javascript code in markdown"
     },
-    "class name in react": {
+    "class name in jsx": {
         "prefix": "clas",
         "body": ["className={$1}"],
-        "description": "class name in react"
+        "description": "class name in jsx"
     },
-    "on click name in react": {
+    "on click name in jsx": {
         "prefix": "onc",
         "body": ["onClick={$1}"],
-        "description": "on click name in react"
+        "description": "on click name in jsx"
     },
     "react component": {
         "prefix": "rec",
@@ -43,6 +43,11 @@
             "export default $2;"
         ],
         "description": "react component"
+    },
+    "react use state": {
+        "prefix": "uses",
+        "body": ["const [$1, $2] = useState<$3>($4)"],
+        "description": "react use state"
     },
     "react use effect": {
         "prefix": "usee",
