@@ -1,22 +1,3 @@
-## expect
-
-    사전에 정의를 하고, 통과를 하면 테스트를 성공시키고 통과를 하지 않으면 테스트를 실패시킵니다.
-
-#
-
-## toBe
-
-    toBe 는 matchers 라고 부르는 함수인데요,
-    특정 값이 어떤 조건을 만족하는지, 또는 어떤 함수가 실행이 됐는지, 에러가 났는지 등을 확인 할 수 있게 해줍니다.
-
-#
-
-## describe
-
-    describe 라는 키워드를 사용하면 여러 테스트 케이스를 묶을 수 있습니다.
-
-#
-
 ## TDD(Test Driven Development)
 
     테스트 주도 개발
@@ -46,3 +27,28 @@
     8. getByTestId
 
 [testing] https://learn-react-test.vlpt.us/#/01-javascript-testing
+
+#
+
+## Test code
+
+-   test runner: 테스트 실행시 \*.test.js 파일 테스트 진행
+-   describe: 테스트 그룹화
+-   it: 개별 테스트 수행( === test)
+-   render: 특정 컴포넌트를 jsdom에 렌더링
+-   컴포넌트 렌더링 -> 액션 발생시키기 -> 결과 확인 패턴
+
+[참고] https://tecoble.techcourse.co.kr/post/2021-10-22-react-testing-library/
+
+#
+
+## Query
+
+    렌더링 된 DOM 노드에 접근하여 엘리먼트를 가져오는 메소드
+
+-   get: 동기적 처리, 타켓을 찾지 못할 경우 에러 처리
+-   find: 비동기적 처리, 타켓을 찾지 못할 경우 에러 처리
+-   query: 동기적 처리, 타겟을 찾지 못할 경우 null 반환
+-   all: 다수 엘리먼트 탐색시 메소드 뒤에 All 붙여서 사용
+
+[참고] https://tecoble.techcourse.co.kr/post/2021-10-22-react-testing-library/
