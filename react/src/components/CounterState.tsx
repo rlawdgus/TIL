@@ -1,13 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 
+import Button from "./Button";
+
+import { FlexContainer } from "./_styledComponent";
+
 import { ContextExample } from "../contexts/ContextExample";
 
 const CounterState = () => {
     const [num, setNum] = useState<number>(0);
     const numContext = useContext(ContextExample);
 
-    const increase = () => setNum(num + 1);
-    const decrease = () => setNum(num - 1);
+    const increase = () => {
+        console.clear();
+        setNum(num + 1);
+    };
+    const decrease = () => {
+        console.clear();
+        setNum(num - 1);
+    };
 
     useEffect(() => {
         console.log("CounterState componentDidUpdate");
@@ -19,8 +29,11 @@ const CounterState = () => {
             <p>state num: {num}</p>
             <p>context num: {numContext?.num}</p>
 
-            <button onClick={increase}>+1</button>
-            <button onClick={decrease}>-1</button>
+            <FlexContainer jus="se">
+                <Button onClick={increase}>+1</Button>
+                <Button onClick={decrease}>-1</Button>
+            </FlexContainer>
+
             {console.log("CounterState render")}
         </>
     );

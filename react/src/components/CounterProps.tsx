@@ -1,5 +1,9 @@
 import { useEffect } from "react";
 
+import Button from "./Button";
+
+import { FlexContainer } from "./_styledComponent";
+
 interface Props {
     num: number;
     increase: () => void;
@@ -14,10 +18,13 @@ const CounterProps = ({ num, increase, decrease }: Props) => {
     return (
         <>
             <h1>props</h1>
-            <p>num: {num}</p>
+            <p>App's num: {num}</p>
 
-            <button onClick={increase}>+1</button>
-            <button onClick={decrease}>-1</button>
+            <FlexContainer>
+                <Button onClick={increase}>+1</Button>
+                <Button onClick={decrease}>-1</Button>
+            </FlexContainer>
+
             {console.log("CounterProps render")}
         </>
     );

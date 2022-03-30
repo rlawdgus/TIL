@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import Button from "./Button";
+
+import { FlexContainer } from "./_styledComponent";
+
 import { RootState } from "../store";
 import { increase, decrease } from "../store/counter";
 
@@ -10,10 +14,12 @@ const CounterRedux = () => {
     const num = useSelector((state: RootState) => state.counter.num);
 
     const dispatchIncrease = () => {
+        console.clear();
         dispatch(increase());
     };
 
     const dispatchDecrease = () => {
+        console.clear();
         dispatch(decrease());
     };
 
@@ -24,10 +30,13 @@ const CounterRedux = () => {
     return (
         <>
             <h1>redux</h1>
-            <p>num: {num}</p>
+            <p>redux num: {num}</p>
 
-            <button onClick={dispatchIncrease}>+1</button>
-            <button onClick={dispatchDecrease}>-1</button>
+            <FlexContainer>
+                <Button onClick={dispatchIncrease}>+1</Button>
+                <Button onClick={dispatchDecrease}>-1</Button>
+            </FlexContainer>
+
             {console.log("CounterRedux render")}
         </>
     );
