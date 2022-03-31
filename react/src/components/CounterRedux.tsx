@@ -5,13 +5,13 @@ import Button from "./Button";
 
 import { FlexContainer } from "./_styledComponent";
 
-import { RootState } from "../store";
+import type { RootReducer } from "../store";
 import { increase, decrease } from "../store/counter";
 
 const CounterRedux = () => {
     const dispatch = useDispatch();
 
-    const num = useSelector((state: RootState) => state.counter.num);
+    const num = useSelector((state: RootReducer) => state.counter.num);
 
     const dispatchIncrease = () => {
         console.clear();

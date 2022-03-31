@@ -1,9 +1,17 @@
-import { combineReducers } from "redux";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import counter from "./counter";
+import counterSlice from "./counter";
 
-const rootReducers = combineReducers({ counter });
+const rootReducer = combineReducers({
+    counter: counterSlice.reducer,
+});
 
-export default rootReducers;
+const store = configureStore({
+    reducer: rootReducer,
+});
 
-export type RootState = ReturnType<typeof rootReducers>;
+export type RootReducer = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
+
+export default store;
