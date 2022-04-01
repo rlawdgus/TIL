@@ -1,7 +1,7 @@
     react
     typescript
     redux-toolkit
-    styled-component
+    emotion
     jest
 
 #

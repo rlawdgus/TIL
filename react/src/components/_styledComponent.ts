@@ -1,4 +1,7 @@
-import styled from "styled-components";
+// yarn add @emotion/react @emotion/styled
+// yarn add -D @emotion/babel-plugin
+
+import styled from "@emotion/styled";
 
 export const FlexContainer = styled.div<{
     col?: boolean;
