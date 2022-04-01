@@ -1,10 +1,12 @@
-## 리덕스
+# Redux
 
-### 1. type => 액션 이름, 업데이트시 참고할 데이터
+## 1. type => 액션 이름, 업데이트시 참고할 데이터
 
     const INCREASE = 'counter/INCREASE'
 
-### 2. 액션 생성 함수
+#
+
+## 2. 액션 생성 함수
 
     const increase = createAction(INCREASE)
 
@@ -17,7 +19,9 @@
         => (type: OPEN, payload: {title: "", description: ""}))
     	=> action.payload === {title: "", description: ""}
 
-### 3. 리듀서 => 업데이트 시키는 함수
+#
+
+## 3. 리듀서 => 업데이트 시키는 함수
 
     reduce(누산기, 현재 값, 현재 인덱스, 원본 배열)
         [TYPE]: (state, action) => ({
@@ -39,26 +43,36 @@
     	initialState
     )
 
-#### 1 + 2 + 3 => 리덕스 모듈
+## 1 + 2 + 3 => 리덕스 모듈
 
-### 4. 스토어
+#
+
+## 4. 스토어
 
     1스토어 / 1프로젝트, 상태와 리듀서가 있음
 
-### 5. 디스패치
+#
+
+## 5. 디스패치
 
     스토어 내장함수, 액션 발생 dispatch(increase())
 
-### 6. 구독 => 리스너를 파라미터로 넣어 호출, 상태가 업데이트 될 때마다 호출
+#
 
-### 7. 리덕스 3규칙
+## 6. 구독 => 리스너를 파라미터로 넣어 호출, 상태가 업데이트 될 때마다 호출
+
+#
+
+## 7. 리덕스 3규칙
 
     1. 단일 스토어
     2. 읽기전용, 기존 상태 유지
     3. 리듀서는 이전 상태, 액션 파라미터 이외에는 의존성이 없음
        기존 상태 유지, 똑같은 호출은 똑같은 결과
 
-### 구조
+#
+
+## 구조
 
     store/
     	counter.js (리덕스 모듈)
@@ -84,7 +98,7 @@
 ### redux
 
     yarn add redux react-redux redux-actions
-    yarn add -d @types/react-redux @types/redux-actions
+    yarn add -D @types/react-redux @types/redux-actions
 
 ### + redux saga
 

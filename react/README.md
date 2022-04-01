@@ -2,6 +2,7 @@
     typescript
     redux-toolkit
     styled-component
+    jest
 
 #
 
