@@ -3,6 +3,7 @@
     redux-toolkit
     emotion
     jest
+    storybook
 
 #
 
