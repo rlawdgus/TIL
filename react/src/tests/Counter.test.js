@@ -1,10 +1,14 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+
 import CounterState from "../components/CounterState";
 
-test("counter", () => {
-    render(<CounterState />);
+describe("counter tests", () => {
+    test("CounterState test", () => {
+        // eslint-disable-next-line testing-library/render-result-naming-convention
+        const counter = render(<CounterState />);
 
-    fireEvent.click(screen.getByText("+1"));
+        fireEvent.click(screen.getByText("+1"));
 
-    expect(screen.getByTestId("state")).toMatchSnapshot();
+        expect(counter).toMatchSnapshot();
+    });
 });

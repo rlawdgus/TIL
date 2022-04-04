@@ -26,7 +26,7 @@ const CounterState = () => {
     return (
         <>
             <h1>state</h1>
-            <p data-testid="state">state num: {num}</p>
+            <p>state num: {num}</p>
             <p>context num: {numContext?.num}</p>
 
             <FlexContainer jus="se">
