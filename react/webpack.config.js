@@ -6,7 +6,7 @@ module.exports = {
     entry: "./src/index.tsx",
     output: {
         path: path.join(__dirname, "build"),
-        filename: "index_bundle.js",
+        filename: "bundle.js",
     },
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
@@ -22,7 +22,9 @@ module.exports = {
             {
                 test: /\.(ts|tsx)$/,
                 exclude: /node_modules/,
-                use: ["ts-loader"],
+                use: [
+                    { loader: "ts-loader", options: { transpileOnly: true } },
+                ],
             },
             {
                 test: /\.(css|scss)$/,
@@ -36,7 +38,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, "src", "index.html"),
+            template: path.join(__dirname, "public", "index.html"),
         }),
     ],
 };
