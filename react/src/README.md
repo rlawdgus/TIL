@@ -176,3 +176,48 @@ useMemo(fn, [dependencies]);
 // dependencies가 변경되었을 때 새로운 fn을 반환한다.
 useCallback(fn, [dependencies]);
 ```
+
+#
+
+# Webpack: 모듈 번들러
+
+    yarn add -D webpack webpack-cli
+
+    웹팩 개발 서버
+    yarn add -D webpack-dev-server
+
+    (예시)css 로더
+    yarn add -D style-loader css-loader
+
+    웹팩 플러그인
+    https://webpack.js.org/plugins/
+
+```javascript
+// webpack.config.js
+const path = require("path");
+
+module.exports = {
+    mode: "production: 최대 압축(공백 제거), development: 포맷팅",
+    entry: {
+        // "번들링할 파일",
+        index: "src/index.js",
+        about: "src/about.js",
+        naming: "src/naming.js",
+    },
+    output: {
+        // __dirname: 현재 webpack.config.js 파일 위치
+        path: path.resolve(__dirname, "dist(하위 경로, 결과물 위치)"),
+        // [name]: 파일 이름 output
+        // index_bundle.js, about_bundle.js, naming_bundle.js
+        filename: "[name]_bundle.js",
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/, // test 형식에 맞는 파일은
+                use: ["style-loader", "css-loader"], // 이 로더를 사용한다.
+            },
+        ],
+    },
+};
+```
