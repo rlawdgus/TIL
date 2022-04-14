@@ -1,16 +1,16 @@
 import { useEffect } from "react";
 
-import Button from "./Button";
+import Button from "../Button";
 
-import { FlexContainer } from "./_styledComponent";
+import { FlexContainer } from "../_styledComponent";
 
-interface Props {
+interface CounterPropsProps {
     num: number;
     increase: () => void;
     decrease: () => void;
 }
 
-const CounterProps = ({ num, increase, decrease }: Props) => {
+const CounterProps = ({ num, increase, decrease }: CounterPropsProps) => {
     useEffect(() => {
         console.log("CounterProps componentDidUpdate");
     }, [num]);

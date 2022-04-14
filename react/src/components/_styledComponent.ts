@@ -54,3 +54,28 @@ export const StyledButton = styled.button`
     border: none;
     border-radius: 5px;
 `;
+
+export const StyledList = styled.ul`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    width: 300px;
+    margin-top: 50px;
+    padding: 20px;
+`;
+
+export const StyledListItem = styled.li`
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: white;
+    background-color: salmon;
+    user-select: none;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+`;

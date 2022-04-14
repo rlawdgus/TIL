@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Button from "./Button";
+import Button from "../Button";
 
-import { FlexContainer } from "./_styledComponent";
+import { FlexContainer } from "../_styledComponent";
 
-import type { RootReducer } from "../store";
-import { increase, decrease } from "../store/counter";
+import type { RootReducer } from "../../store";
+import { increase, decrease } from "../../store/counter";
 
 const CounterRedux = () => {
     const dispatch = useDispatch();

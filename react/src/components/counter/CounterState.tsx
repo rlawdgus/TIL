@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 
-import Button from "./Button";
+import Button from "../Button";
 
-import { FlexContainer } from "./_styledComponent";
+import { FlexContainer } from "../_styledComponent";
 
-import { ContextExample } from "../contexts/ContextExample";
+import { ContextExample } from "../../contexts/ContextExample";
 
 const CounterState = () => {
     const [num, setNum] = useState<number>(0);
