@@ -21,6 +21,11 @@
         "body": ["```javascript", "$1", "```"],
         "description": "javascript code in markdown"
     },
+    "typescript code in markdown": {
+        "prefix": "mdts",
+        "body": ["```typescript", "$1", "```"],
+        "description": "typescript code in markdown"
+    },
     "class name in jsx": {
         "prefix": "clas",
         "body": ["className={$1}"],
