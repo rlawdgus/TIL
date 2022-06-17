@@ -1,0 +1,63 @@
+{
+    "javascript code in markdown": {
+        "prefix": "mdjs",
+        "body": ["```javascript", "$1", "```"],
+        "description": "javascript code in markdown"
+    },
+    "typescript code in markdown": {
+        "prefix": "mdts",
+        "body": ["```typescript", "$1", "```"],
+        "description": "typescript code in markdown"
+    },
+
+    "class name in jsx": {
+        "prefix": "clas",
+        "body": ["className={$1}"],
+        "description": "class name in jsx"
+    },
+    "on click name in jsx": {
+        "prefix": "onc",
+        "body": ["onClick={$1}"],
+        "description": "on click name in jsx"
+    },
+    "console log": {
+        "prefix": "cl",
+        "body": ["console.log($1)"],
+        "description": "console log"
+    },
+
+    "react component": {
+        "prefix": "rec",
+        "body": [
+            "$0",
+            "",
+            "const $1 = () => {",
+            "return <></>",
+            "}",
+            "",
+            "export default $2;"
+        ],
+        "description": "react component"
+    },
+    "react useState": {
+        "prefix": "uses",
+        "body": ["const [$1, $2] = useState$3<$4>($5)"],
+        "description": "react useState"
+    },
+    "react useRef": {
+        "prefix": "user",
+        "body": ["const $1 = useRef$2<$3>($4)"],
+        "description": "react useRef"
+    },
+    "react useEffect": {
+        "prefix": "usee",
+        "body": [
+            "useEffect$1(() => {",
+            "$2",
+            "}, ",
+            "// eslint-disable-next-line react-hooks/exhaustive-deps",
+            "[])"
+        ],
+        "description": "react useEffect"
+    }
+}
