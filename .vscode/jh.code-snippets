@@ -72,5 +72,10 @@
       "});"
     ],
     "description": "test code"
+  },
+  "it": {
+    "prefix": "it",
+    "body": ["it('$1', () => {$2})"],
+    "description": "test code it"
   }
 }
