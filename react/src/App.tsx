@@ -1,13 +1,9 @@
-import List from "./containers/List";
+import List from "./containers/virtualized/List";
 
-import { FlexContainer } from "./components/_styledComponent";
+const LIST = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 const App = () => {
-    return (
-        <FlexContainer jus="se" centerAli>
-            <List />
-        </FlexContainer>
-    );
+  return <List list={LIST} windowHeight={300} itemHeight={50} />;
 };
 
 export default App;

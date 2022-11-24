@@ -3,9 +3,9 @@ import type { DropResult } from "react-beautiful-dnd";
 import { useState } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
-import ListItem from "../components/list/ListItem";
+import ListItem from "../../components/dnd/ListItem";
 
-import { StyledList } from "../components/_styledComponent";
+import { StyledList } from "../../components/_styledComponent";
 
 interface ListItemType {
     id: string;
