@@ -21,13 +21,6 @@ const List = ({ list, windowHeight, itemHeight }: ListProps) => {
     Math.floor((scrollTop + windowHeight) / itemHeight) + 1
   );
 
-  const sliced = [];
-  for (let i = startIndex; i < endIndex; i++) {
-    sliced.push(list[i]);
-  }
-
-  console.log(startIndex, endIndex);
-
   const onScroll: UIEventHandler<HTMLDivElement> = (e) =>
     setScrollTop(e.currentTarget.scrollTop);
 
@@ -37,7 +30,7 @@ const List = ({ list, windowHeight, itemHeight }: ListProps) => {
       style={{ height: windowHeight, overflowY: "scroll" }}
     >
       <StyledList height={innerHeight}>
-        {sliced.map((item, index) => (
+        {list.slice(startIndex, endIndex).map((item, index) => (
           <Item
             key={index}
             value={item}
